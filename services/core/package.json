@@ -18,7 +18,7 @@
     "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc",
-    "test-unit": "vitest run --coverage --passWithNoTests"
+    "test-unit": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@platy/serverless-configuration": "1.0.0",

@@ -1,0 +1,46 @@
+{
+  "name": "@platy/converter",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
+    "package-transpile": "tsup src/index.ts",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js src",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "vitest run --coverage --passWithNoTests",
+    "watch": "pnpm clean dist && concurrently 'pnpm:package-* --watch'"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@vitest/coverage-c8": "^0.27.2",
+    "concurrently": "^7.6.0",
+    "dependency-cruiser": "^12.5.0",
+    "eslint": "^8.32.0",
+    "json-schema-to-ts": "^2.6.2",
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.1",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vite-tsconfig-paths": "^4.0.3",
+    "vitest": "^0.27.2"
+  }
+}

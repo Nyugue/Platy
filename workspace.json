@@ -1,8 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "converter": "packages/converter",
     "core": "services/core",
     "core-contracts": "contracts/core-contracts",
+    "e2e-testing": "packages/e2e-testing",
     "serverless-configuration": "packages/serverless-configuration"
   }
 }
